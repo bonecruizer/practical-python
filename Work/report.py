@@ -3,7 +3,7 @@
 # using csv reader for much cleaner code.
 # Creates a list of tuples
 
-# Exercise 2.4
+# Exercise 2.9
 import csv
 import sys
 
@@ -25,5 +25,5 @@ def portfolio_read(filename):
 if len(sys.argv) == 2:
     filename = sys.argv[1]
 else:
-    filename = 'Work/Data/portfolio.csv'
+    filename = 'Work/Data/missing.csv'
 

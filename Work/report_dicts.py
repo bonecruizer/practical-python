@@ -34,4 +34,5 @@ if len(sys.argv) == 2:
 else:
     filename = 'Work/Data/portfolio.csv'
 
-#portfolio_read(filename)
+
+
