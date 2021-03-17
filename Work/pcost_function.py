@@ -1,30 +1,35 @@
+#!/usr/bin/env python3
 # pcost_function.py
 #
 # Exercise 1.30, 1.31
 
+from report import read_portfolio
+
+
 def portfolio_cost(filename):
-    portfolio = open(filename, 'rt')
-    headers = next(portfolio)
-
-    currentline = []
+    portfolio = read_portfolio(filename)
     totalcost = 0
+    for row in portfolio:
 
-    for line in portfolio:
-        currentline = line.split(',')
         try:
-            stockcost = int(currentline[1]) * float(currentline[2])
-            # print(f'Cost of: {currentline[0]} ,=  {currentline[1]}, x  {currentline[2].strip()} = {stockcost:.2f}')
+            stockcost = (row['shares']) * (row['price'])
+
         except ValueError:
-            print('Error in file, fields missing?', line)
+            print('Error in file, fields missing?', row)
 
+        totalcost += stockcost
 
-        totalcost = totalcost + stockcost
-
-    portfolio.close()
-
-    # print(f'Total Cost: {totalcost}')
     return totalcost
 
 
-cost = portfolio_cost('Data/missing.csv')
-print('Total cost: ', cost)
+
+def main(args):
+    if len(args) != 2:
+        raise SystemExit('Usage: %s portfile pricefile' % args[0])
+    cost = portfolio_cost(args[1])
+    print('Total cost: ', cost)
+
+if __name__ == '__main__':
+    import sys
+    main(sys.argv)
+

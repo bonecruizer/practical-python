@@ -18,4 +18,14 @@ for line in portfolio:
 
 portfolio.close()
 
-print(f'Total Cost: {totalcost}')
+
+
+def main(args):
+    if len(args) != 3:
+        raise SystemExit('Usage: %s portfile pricefile' % args[0])
+    print(f'Total Cost: {totalcost}')
+
+if __name__ == '__main__':
+    import sys
+    main(sys.argv)
+
